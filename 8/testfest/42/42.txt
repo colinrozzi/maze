@@ -1,0 +1,127 @@
+(testing /course/cs4500f22/ta/github/crozzi-obrienz/8/xbad2)
+(testing /course/cs4500f22/ta/github/8/42/Tests/0-in.json /course/cs4500f22/ta/github/8/42/Tests/0-out.json)
+(testing /course/cs4500f22/ta/github/8/42/Tests/1-in.json /course/cs4500f22/ta/github/8/42/Tests/1-out.json)
+(testing /course/cs4500f22/ta/github/8/42/Tests/2-in.json /course/cs4500f22/ta/github/8/42/Tests/2-out.json)
+(testing /course/cs4500f22/ta/github/8/42/Tests/3-in.json /course/cs4500f22/ta/github/8/42/Tests/3-out.json)
+(testing /course/cs4500f22/ta/github/8/42/Tests/4-in.json /course/cs4500f22/ta/github/8/42/Tests/4-out.json)
+player-info-on-home?: contract violation
+  expected: player-info?
+  given: #f
+  in: the 1st argument of
+      (-> player-info? boolean?)
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/player-info.rkt
+  blaming: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/state.rkt
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/player-info.rkt:33:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   [repeats 1 more time]
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:85:0: run-round
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:68:0: play-until-completion-help
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:39:0: run-game
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/8/xbad2" main)
+---------------------------------
+(*** score 0)
+(*** on)
+'((("roger" "Euclid" "win" 2)
+   ("rafa" "Riemann")
+   ("novak" "Riemann" "takeTurn" 3)
+   ("etho" "Euclid"))
+  #hasheq((board
+           .
+           #hasheq((connectors
+                    .
+                    (("│" "│" "│" "│" "┤" "─" "│")
+                     ("│" "├" "┘" "│" "├" "┐" "│")
+                     ("└" "│" "├" "│" "┬" "└" "│")
+                     ("│" "┘" "│" "│" "┴" "┘" "│")
+                     ("├" "│" "┌" "│" "┼" "┌" "│")
+                     ("│" "┘" "│" "┘" "│" "│" "│")
+                     ("│" "│" "│" "│" "│" "│" "│")))
+                   (treasures
+                    .
+                    ((("ruby" "ruby")
+                      ("ruby" "beryl")
+                      ("ruby" "aplite")
+                      ("ruby" "garnet")
+                      ("ruby" "jasper")
+                      ("ruby" "spinel")
+                      ("ruby" "zircon"))
+                     (("diamond" "ruby")
+                      ("beryl" "beryl")
+                      ("beryl" "aplite")
+                      ("beryl" "garnet")
+                      ("beryl" "jasper")
+                      ("beryl" "spinel")
+                      ("beryl" "zircon"))
+                     (("citrine" "ruby")
+                      ("diamond" "beryl")
+                      ("aplite" "aplite")
+                      ("aplite" "garnet")
+                      ("aplite" "jasper")
+                      ("aplite" "spinel")
+                      ("aplite" "zircon"))
+                     (("azurite" "ruby")
+                      ("citrine" "beryl")
+                      ("diamond" "aplite")
+                      ("garnet" "garnet")
+                      ("garnet" "jasper")
+                      ("garnet" "spinel")
+                      ("garnet" "zircon"))
+                     (("emerald" "ruby")
+                      ("azurite" "beryl")
+                      ("citrine" "aplite")
+                      ("diamond" "garnet")
+                      ("jasper" "jasper")
+                      ("jasper" "spinel")
+                      ("jasper" "zircon"))
+                     (("prehnite" "ruby")
+                      ("emerald" "beryl")
+                      ("azurite" "aplite")
+                      ("citrine" "garnet")
+                      ("diamond" "jasper")
+                      ("spinel" "spinel")
+                      ("spinel" "zircon"))
+                     (("stilbite" "ruby")
+                      ("prehnite" "beryl")
+                      ("emerald" "aplite")
+                      ("azurite" "garnet")
+                      ("citrine" "jasper")
+                      ("diamond" "spinel")
+                      ("zircon" "zircon"))))))
+          (last . null)
+          (plmt
+           .
+           (#hasheq((color . "red")
+                    (current . #hasheq((column# . 0) (row# . 5)))
+                    (goto . #hasheq((column# . 5) (row# . 5)))
+                    (home . #hasheq((column# . 0) (row# . 0))))
+            #hasheq((color . "green")
+                    (current . #hasheq((column# . 1) (row# . 1)))
+                    (goto . #hasheq((column# . 0) (row# . 0)))
+                    (home . #hasheq((column# . 5) (row# . 5))))
+            #hasheq((color . "blue")
+                    (current . #hasheq((column# . 6) (row# . 6)))
+                    (goto . #hasheq((column# . 5) (row# . 0)))
+                    (home . #hasheq((column# . 0) (row# . 5))))
+            #hasheq((color . "orange")
+                    (current . #hasheq((column# . 6) (row# . 6)))
+                    (goto . #hasheq((column# . 0) (row# . 5)))
+                    (home . #hasheq((column# . 5) (row# . 0))))))
+          (spare
+           .
+           #hasheq((1-image . "sunstone")
+                   (2-image . "unakite")
+                   (tilekey . "│")))))
+(*** expected)
+'((("etho") ("novak")))
+(*** but received)
+'(((plain fast with-newline plain-unicode) ()))
+
+
+((/course/cs4500f22/ta/github/8/42/Tests/0-in.json /course/cs4500f22/ta/github/8/42/Tests/0-out.json) (/course/cs4500f22/ta/github/8/42/Tests/1-in.json /course/cs4500f22/ta/github/8/42/Tests/1-out.json) (/course/cs4500f22/ta/github/8/42/Tests/2-in.json /course/cs4500f22/ta/github/8/42/Tests/2-out.json) (/course/cs4500f22/ta/github/8/42/Tests/3-in.json /course/cs4500f22/ta/github/8/42/Tests/3-out.json))
+((passed 4) (total 5) (partial-score 4))
+

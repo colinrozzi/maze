@@ -1,0 +1,115 @@
+(testing /course/cs4500f22/ta/github/crozzi-obrienz/8/xbad2)
+(testing /course/cs4500f22/ta/github/8/9/Tests/0-in.json /course/cs4500f22/ta/github/8/9/Tests/0-out.json)
+(testing /course/cs4500f22/ta/github/8/9/Tests/1-in.json /course/cs4500f22/ta/github/8/9/Tests/1-out.json)
+player-info-on-home?: contract violation
+  expected: player-info?
+  given: #f
+  in: the 1st argument of
+      (-> player-info? boolean?)
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/player-info.rkt
+  blaming: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/state.rkt
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/player-info.rkt:33:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   [repeats 1 more time]
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:85:0: run-round
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:68:0: play-until-completion-help
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Referee/referee.rkt:39:0: run-game
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/8/xbad2" main)
+---------------------------------
+(*** score 0)
+(*** on)
+'((("First" "Euclid") ("Second" "Riemann" "takeTurn" 2))
+  #hasheq((board
+           .
+           #hasheq((connectors
+                    .
+                    (("└" "┴" "┤" "└" "┐" "│" "│")
+                     ("│" "┤" "├" "├" "└" "┴" "┘")
+                     ("┐" "┤" "┴" "┌" "┼" "├" "┼")
+                     ("┴" "┼" "─" "┤" "─" "│" "└")
+                     ("┤" "┘" "┘" "┴" "└" "└" "└")
+                     ("┤" "┌" "├" "┬" "─" "┬" "├")
+                     ("┴" "┐" "┤" "└" "└" "┐" "─")))
+                   (treasures
+                    .
+                    ((("black-obsidian" "diamond")
+                      ("tourmaline-laser-cut" "green-aventurine")
+                      ("purple-cabochon" "hematite")
+                      ("grossular-garnet" "blue-ceylon-sapphire")
+                      ("yellow-heart" "golden-diamond-cut")
+                      ("orange-radiant" "green-beryl-antique")
+                      ("clinohumite" "blue-spinel-heart"))
+                     (("apricot-square-radiant" "rhodonite")
+                      ("heliotrope" "jasper")
+                      ("blue-ceylon-sapphire" "australian-marquise")
+                      ("clinohumite" "magnesite")
+                      ("moonstone" "dumortierite")
+                      ("rhodonite" "star-cabochon")
+                      ("golden-diamond-cut" "zoisite"))
+                     (("yellow-heart" "labradorite")
+                      ("red-diamond" "black-obsidian")
+                      ("iolite-emerald-cut" "moonstone")
+                      ("pink-spinel-cushion" "moss-agate")
+                      ("black-spinel-cushion" "cordierite")
+                      ("tigers-eye" "purple-spinel-trillion")
+                      ("ruby" "tigers-eye"))
+                     (("rose-quartz" "yellow-baguette")
+                      ("green-beryl-antique" "lemon-quartz-briolette")
+                      ("tigers-eye" "cordierite")
+                      ("bulls-eye" "fancy-spinel-marquise")
+                      ("kunzite" "black-onyx")
+                      ("yellow-baguette" "cordierite")
+                      ("orange-radiant" "yellow-beryl-oval"))
+                     (("apricot-square-radiant" "magnesite")
+                      ("clinohumite" "emerald")
+                      ("lemon-quartz-briolette" "heliotrope")
+                      ("purple-square-cushion" "diamond")
+                      ("blue-cushion" "grandidierite")
+                      ("golden-diamond-cut" "unakite")
+                      ("australian-marquise" "pink-round"))
+                     (("pink-emerald-cut" "labradorite")
+                      ("tigers-eye" "black-onyx")
+                      ("clinohumite" "zircon")
+                      ("moonstone" "hackmanite")
+                      ("lapis-lazuli" "heliotrope")
+                      ("green-beryl" "red-diamond")
+                      ("padparadscha-oval" "tigers-eye"))
+                     (("sunstone" "diamond")
+                      ("diamond" "tigers-eye")
+                      ("green-aventurine" "cordierite")
+                      ("magnesite" "jasper")
+                      ("lemon-quartz-briolette" "citrine-checkerboard")
+                      ("blue-ceylon-sapphire" "green-princess-cut")
+                      ("green-beryl-antique" "pink-spinel-cushion"))))))
+          (last . (2 "UP"))
+          (plmt
+           .
+           (#hasheq((color . "red")
+                    (current . #hasheq((column# . 2) (row# . 3)))
+                    (goto . #hasheq((column# . 5) (row# . 3)))
+                    (home . #hasheq((column# . 1) (row# . 1))))
+            #hasheq((color . "green")
+                    (current . #hasheq((column# . 1) (row# . 5)))
+                    (goto . #hasheq((column# . 3) (row# . 3)))
+                    (home . #hasheq((column# . 1) (row# . 5))))))
+          (spare
+           .
+           #hasheq((1-image . "clinohumite")
+                   (2-image . "labradorite")
+                   (tilekey . "┌")))))
+(*** expected)
+'((("First") ("Second")))
+(*** but received)
+'(((plain fast with-newline plain-unicode) ()))
+
+
+(testing /course/cs4500f22/ta/github/8/9/Tests/2-in.json /course/cs4500f22/ta/github/8/9/Tests/2-out.json)
+(testing /course/cs4500f22/ta/github/8/9/Tests/3-in.json /course/cs4500f22/ta/github/8/9/Tests/3-out.json)
+((/course/cs4500f22/ta/github/8/9/Tests/0-in.json /course/cs4500f22/ta/github/8/9/Tests/0-out.json) (/course/cs4500f22/ta/github/8/9/Tests/2-in.json /course/cs4500f22/ta/github/8/9/Tests/2-out.json) (/course/cs4500f22/ta/github/8/9/Tests/3-in.json /course/cs4500f22/ta/github/8/9/Tests/3-out.json))
+((passed 3) (total 4) (partial-score 3))
+

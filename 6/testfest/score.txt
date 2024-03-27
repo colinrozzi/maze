@@ -1,0 +1,13 @@
+Delivery
+5/5 pts: Deliverable 6/xgames exists with the right permissions
+5/5 pts: Deliverable Maze/Referee/observer.PP exists
+5/5 pts: Deliverable 6/xgames-with-observer exists with the right permissions
+5/5 pts: Deliverable Maze/Planning/remote.md exists
+5/5 pts: Delivery of test files
+Functionality
+0/60 pts: Passed 0 out of 5 tests (see test-results.txt)
+60/60 pts: 3 valid tests (see test-audit-results.txt)
+60/60 bonus pts (other teams failing your tests)
+Inspection
+113/165 pts: See inspection.md
+Total: 258/310 pts

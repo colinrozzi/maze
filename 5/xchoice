@@ -1,0 +1,31 @@
+#! /usr/bin/env racket
+#lang racket/base
+
+(require json)
+
+(require "../Maze/Common/state.rkt")
+(require (submod "../Maze/Common/state.rkt" serialize))
+(require "../Maze/Common/board.rkt")
+(require (submod "../Maze/Common/board.rkt" serialize))
+(require "../Maze/Players/strategy.rkt")
+(require (submod "../Maze/Players/strategy.rkt" serialize))
+
+
+;; InputPort -> (values HashTable HashTable)
+;; Reads a board object and coordinate object from STDIN
+(define (read-state-input input-port)
+  (define strategy (read-json input-port))
+  (define state-ht (read-json input-port))
+  (define goal-ht (read-json input-port))
+  (values strategy state-ht goal-ht))
+
+
+;; Reads a board and position from STDIN, computes all positions reachable from
+;; the given position, and writes these positions to STDOUT as JSON
+(module+ main
+  (define-values (strategy state-ht goal-ht) (read-state-input (current-input-port)))
+
+  (define goal (json-coordinate->gridposn goal-ht))
+  (define gstate (replace-active-player-dummy-goal (json-public-state->player-state state-ht) goal))
+
+  (write-json (action->json-choice (if (equal? strategy "Riemann") (riemann-strategy gstate) (euclidean-strategy gstate)))))

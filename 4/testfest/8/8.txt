@@ -1,0 +1,19 @@
+(testing /course/cs4500f22/ta/github/crozzi-obrienz/4/xstate)
+(testing /course/cs4500f22/ta/github/4/8/Tests/4-in.json /course/cs4500f22/ta/github/4/8/Tests/4-out.json)
+hash->gamestate: contract violation
+  expected: hash?
+  given: #<eof>
+  in: the 1st argument of
+      (-> hash? gamestate?)
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt
+  blaming: (/course/cs4500f22/ta/github/crozzi-obrienz/4/xstate main)
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt:18:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/4/xstate" main)
+((/course/cs4500f22/ta/github/4/8/Tests/4-in.json /course/cs4500f22/ta/github/4/8/Tests/4-out.json))
+((passed 1) (total 1) (partial-score 1))
+

@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+from tkinter import *
+from tkinter import ttk
+
+CANVAS_SIZE = 600
+LINE_COLOR = "BLUE"
+LINE_WIDTH = 5
+
+
+# LOAD JSON FROM STDIN
+json_input = sys.stdin.read()
+
+
+def parse_rows(json_input):
+    objects = []
+    in_object = False
+    new_object = ""
+    for c in json_input:
+        if c == '"' and not in_object:
+            in_object = True
+            continue
+
+        if in_object:
+            if c == '"':
+                in_object = False
+                objects.append(new_object)
+                new_object = ""
+            else:
+                new_object += c
+    return objects
+
+
+rows = parse_rows(json_input)
+
+square_side_length = 50
+
+
+def draw_up_right(canvas, start_x, start_y, color):
+    draw_border(canvas, start_x, start_y)
+
+    canvas.create_line(
+        start_x + square_side_length / 2,
+        start_y,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+    canvas.create_line(
+        start_x + square_side_length,
+        start_y + square_side_length / 2,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+
+
+def draw_border(canvas, start_x, start_y):
+    canvas.create_line(start_x, start_y, start_x, start_y + square_side_length)
+    canvas.create_line(
+        start_x,
+        start_y + square_side_length,
+        start_x + square_side_length,
+        start_y + square_side_length,
+    )
+    canvas.create_line(
+        start_x + square_side_length,
+        start_y,
+        start_x + square_side_length,
+        start_y + square_side_length,
+    )
+    canvas.create_line(start_x, start_y, start_x + square_side_length, start_y)
+
+
+def draw_up_left(canvas, start_x, start_y, color):
+    draw_border(canvas, start_x, start_y)
+
+    canvas.create_line(
+        start_x + square_side_length / 2,
+        start_y,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+    canvas.create_line(
+        start_x,
+        start_y + square_side_length / 2,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+
+
+def draw_down_right(canvas, start_x, start_y, color):
+    draw_border(canvas, start_x, start_y)
+    canvas.create_line(
+        start_x + square_side_length / 2,
+        start_y + square_side_length,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+    canvas.create_line(
+        start_x + square_side_length,
+        start_y + square_side_length / 2,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+
+
+def draw_down_left(canvas, start_x, start_y, color):
+    draw_border(canvas, start_x, start_y)
+    canvas.create_line(
+        start_x + square_side_length / 2,
+        start_y + square_side_length,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+    canvas.create_line(
+        start_x,
+        start_y + square_side_length / 2,
+        start_x + square_side_length / 2,
+        start_y + square_side_length / 2,
+        fill=color,
+    )
+
+
+# DRAW CANVAS
+root = Tk()
+root.geometry(f"{CANVAS_SIZE}x{CANVAS_SIZE}")
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+
+canvas = Canvas(root)
+canvas.grid(column=0, row=0, sticky=(N, W, E, S))
+
+
+def click_handler(event):
+    print(json.dumps([event.x, event.y]))
+    root.quit()
+
+root.bind("<Button>", click_handler)
+
+
+def draw_square(canvas, row: int, col: int, symbol: str):
+    start_x = row * square_side_length
+    start_y = col * square_side_length
+
+    if symbol == "┘":
+        draw_up_left(canvas, start_x, start_y, LINE_COLOR)
+    elif symbol == "┐":
+        draw_down_left(canvas, start_x, start_y, LINE_COLOR)
+    elif symbol == "└":
+        draw_up_right(canvas, start_x, start_y, LINE_COLOR)
+    elif symbol == "┌":
+        draw_down_right(canvas, start_x, start_y, LINE_COLOR)
+
+
+for i in range(len(rows)):
+    obj_str = rows[i]
+    for j in range(len(obj_str)):
+        draw_square(canvas, j, i, obj_str[j])
+
+
+root.mainloop()

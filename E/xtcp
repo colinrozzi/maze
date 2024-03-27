@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+
+import asyncio, argparse
+import json
+
+
+parser = argparse.ArgumentParser(description="Read JSON objects from a network and return their corresponding symbols")
+parser.add_argument("port", type=int, help="Port to listen on")
+cmdline_args = parser.parse_args()
+
+
+def parse_input(s):
+    """Parse a string of JSON objects conforming to assignment TAHBPL C
+
+    Args:
+        s: String to parse
+
+    Returns:
+        A list of JSON objects
+
+    """
+    objects = []
+    in_object = False
+    new_object = ""
+    for c in s:
+        if c == '{':
+            in_object = True
+        
+        if in_object:
+            new_object += c
+            if c == '}':
+                in_object = False
+                objects.append(new_object)
+                new_object = ""
+
+    return objects
+
+
+def object_to_symbol(obj):
+    """Converts a JSON object conforming to the TAHBPL C assignment spec to a symbol
+
+    Args:
+        obj: Dictionary conforming to the TAHBPL C JSON spec
+
+    Returns:
+        A String representing one of the four TAHBPL symbols
+    """
+    vert = obj["vertical"]
+    horz = obj["horizontal"]
+    if vert == "UP" and horz == "LEFT":
+        return "┘"
+    elif vert == "DOWN" and horz == "LEFT":
+        return "┐"
+    elif vert == "UP" and horz == "RIGHT":
+        return "└"
+    elif vert == "DOWN" and horz == "RIGHT":
+        return "┌"
+
+
+def json_string_to_symbols(received):
+    """
+    Args:
+        received: A string containing JSON objects
+
+    Returns:
+        An array of strings, where each string is one of the four pipe symbols
+    """
+    json_objects_str = parse_input(received)
+    json_objects = [json.loads(s) for s in json_objects_str]
+    return [object_to_symbol(obj) for obj in json_objects]
+
+
+@asyncio.coroutine
+def collect_messages(reader):
+    """
+    Collect the data from the reader object until EOF
+
+    Args:
+        reader: A StreamReader object to read input from
+
+    Returns:
+        A string of the data received from the StreamReader object        
+    """
+    received = ""
+    while not reader.at_eof():
+
+        data = yield from reader.read(100)
+        message = data.decode()
+        received += message
+
+    return received
+
+@asyncio.coroutine
+def write_return(writer, symbol_array):
+    """
+    Write the symbol_array to the writer object
+
+    Args:
+        writer: A StreamWriter object to write data to
+        symbol_array: The array of symbols to be written out
+
+    Returns:
+        None
+    """
+    writer.write(json.dumps(symbol_array, ensure_ascii=False).encode('utf-8'))
+
+    yield from writer.drain()
+    writer.close()
+
+@asyncio.coroutine
+def end_loop():
+    """
+    Gets the current loop and ends it, closing the server
+    
+    Args:
+        None
+
+    Returns:
+        None
+    """
+    loop = asyncio.get_event_loop()
+    loop.stop()
+
+def input_to_symbols(received):
+    """
+    Converts the raw data received into symbols to be outputted
+
+    Args:
+        received: The string of raw data received, to be turned into symbols
+    
+    Returns:
+        A list of symbols corresponding to the data received
+    
+    """
+    json_objects_str = parse_input(received)
+    json_objects = [json.loads(s) for s in json_objects_str]
+    return [object_to_symbol(obj) for obj in json_objects]
+
+
+async def server_protocol(reader, writer):
+    """
+    Responsible for the operation of the server and delegation
+        to helper functions, takes in data, processes it into
+        symbols, and the outputs it and ends the server
+
+    Args:
+        reader: A StreamReader object to take in data
+        writer: A StreamWriter object to put out data
+    
+    Returns:
+        None
+    """
+    received = await collect_messages(reader)
+
+    symbol_array = input_to_symbols(received)
+    
+    await write_return(writer, symbol_array)
+
+    await end_loop()
+
+
+loop = asyncio.get_event_loop()
+task = asyncio.start_server(server_protocol, '127.0.0.1', cmdline_args.port, loop=loop)
+loop.run_until_complete(task)
+
+try:
+    loop.run_forever()
+except KeyboardInterrupt:
+    pass

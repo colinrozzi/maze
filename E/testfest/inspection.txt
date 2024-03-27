@@ -1,0 +1,30 @@
+Pair: crozzi-obrienz
+Commit: 217b26012d21bb96ac1a27d7d62236f4e6087503
+Self-eval: https://github.khoury.northeastern.edu/CS4500-F22/crozzi-obrienz/blob/c28f6419a410b1df138416a90162a7ed354e3fb2/E/self-E.md
+Score: 20/30
+Grader: Ryan Jung
+
+Self eval:
+
+> Technically this is handled in three lines which are not in their own function, but the code is so concise and clear we believe it is satisfactory in its current form.
+
+One line: `get_port_argument()` would be even more concise. It also wouldn't require the reader to read the behavior and meaning of 
+
+> The server protocol is created and listening on line 163, which is the bridge between the client and our functionality.
+
+Which again, is not in a unit of code. (line 163 on the top level of a file is not an encapsulated unit of code)
+
+
+Code Inspection:
+
+-10 *TCP* part is not its own function/method
+The actual TCP connection is in the top level, not in a particular unit of code. You did well to seperare the streaming functionality (required by your library) but we wanted to see more than that.
+
+General notes:
+
+The actual content of your "main" function (port parsing and TCP connection + JSON logic) are separated by over 100 lines of code. It is impossible for a reader to understand the flow of the program without reading the entire file top to bottom. We usually bundle the most important high level tasks in a function near the top so that the reader *doesnt* need to read the entire file.
+
+You are parsing JSON manually, this is a mistake. Investigate your libraries to save yourselves time and energy for future assignments. Lines 12-137 ought to be 2 calls to a libary instead.
+
+
+Commit URL: https://github.khoury.northeastern.edu/CS4500-F22/crozzi-obrienz/tree/217b26012d21bb96ac1a27d7d62236f4e6087503

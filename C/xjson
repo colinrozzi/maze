@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+import sys
+import json
+
+
+def parse_input(s):
+    """Parse a string of JSON objects conforming to assignment TAHBPL C
+
+    Args:
+        s: String to parse
+
+    Returns:
+        A list of JSON objects
+
+    """
+    objects = []
+    in_object = False
+    new_object = ""
+    for c in s:
+        if c == '"':
+            in_object = True
+        
+        if in_object:
+            new_object += c
+            if c == '"':
+                in_object = False
+                objects.append(new_object)
+                new_object = ""
+
+    return objects
+
+
+def object_to_symbol(obj):
+    """Converts a JSON object conforming to the TAHBPL C assignment spec to a symbol
+
+    Args:
+        obj: Dictionary conforming to the TAHBPL C JSON spec
+
+    Returns:
+        A String representing one of the four TAHBPL symbols
+    """
+    vert = obj["vertical"]
+    horz = obj["horizontal"]
+    if vert == "UP" and horz == "LEFT":
+        return "┘"
+    elif vert == "DOWN" and horz == "LEFT":
+        return "┐"
+    elif vert == "UP" and horz == "RIGHT":
+        return "└"
+    elif vert == "DOWN" and horz == "RIGHT":
+        return "┌"
+
+
+json_input = sys.stdin.read()
+json_objects_str = parse_input(json_input)
+json_objects = [json.loads(s) for s in json_objects_str]
+symbol_array = [object_to_symbol(obj) for obj in json_objects]
+
+print(json.dumps(symbol_array, ensure_ascii=False))

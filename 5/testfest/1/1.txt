@@ -1,0 +1,21 @@
+(testing /course/cs4500f22/ta/github/crozzi-obrienz/5/xchoice)
+(testing /course/cs4500f22/ta/github/5/1/Tests/0-in.json /course/cs4500f22/ta/github/5/1/Tests/0-out.json)
+hash->gridposn: contract violation
+  expected: hash?
+  given: #<eof>
+  in: the 1st argument of
+      (->
+       hash?
+       (cons/c natural-number/c natural-number/c))
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt
+  blaming: (/course/cs4500f22/ta/github/crozzi-obrienz/5/xchoice main)
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt:20:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/5/xchoice" main)
+((/course/cs4500f22/ta/github/5/1/Tests/0-in.json /course/cs4500f22/ta/github/5/1/Tests/0-out.json))
+((passed 1) (total 1) (partial-score 1))
+

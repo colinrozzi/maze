@@ -1,0 +1,24 @@
+#! /usr/bin/env racket
+#lang racket/base
+
+(require json)
+
+(require "../Maze/Common/board.rkt")
+(require (submod "../Maze/Common/board.rkt" serialize))
+
+
+;; InputPort -> (values HashTable HashTable)
+;; Reads a board object and coordinate object from STDIN
+(define (read-board-and-coordinate input-port)
+  (define board-ht (read-json input-port))
+  (define coordinate (read-json input-port))
+  (values board-ht coordinate))
+
+
+;; Reads a board and position from STDIN, computes all positions reachable from
+;; the given position, and writes these positions to STDOUT as JSON
+(module+ main
+  (define-values (board-ht coordinate) (read-board-and-coordinate (current-input-port)))
+  (define board (json-board->board board-ht))
+  (define pos (cons (hash-ref coordinate 'row#) (hash-ref coordinate 'column#)))
+  (write-json (map gridposn->json-coordinate (sort (board-all-reachable-from board pos) compare-row-col))))

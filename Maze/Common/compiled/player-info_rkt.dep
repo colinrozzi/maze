@@ -1,0 +1,1 @@
+("8.6" tarm64osx ("c44585c1099624f2dadce8afd9b7c40deaa6a685" . "2e2148f992513d5abc6246577f0cf50c23fb213a") #"/Users/colinrozzi/Projects/crozzi-obrienz/Maze/Common/board.rkt" #"/Users/colinrozzi/Projects/crozzi-obrienz/Maze/Common/math.rkt" (collects #"json" #"main.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"rackunit" #"main.rkt"))

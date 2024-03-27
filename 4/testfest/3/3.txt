@@ -1,0 +1,146 @@
+(testing /course/cs4500f22/ta/github/crozzi-obrienz/4/xstate)
+(testing /course/cs4500f22/ta/github/4/3/Tests/0-in.json /course/cs4500f22/ta/github/4/3/Tests/0-out.json)
+hash->gamestate: contract violation
+  expected: hash?
+  given: #<eof>
+  in: the 1st argument of
+      (-> hash? gamestate?)
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt
+  blaming: (/course/cs4500f22/ta/github/crozzi-obrienz/4/xstate main)
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt:18:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/4/xstate" main)
+(testing /course/cs4500f22/ta/github/4/3/Tests/1-in.json /course/cs4500f22/ta/github/4/3/Tests/1-out.json)
+tile-make: contract violation
+  expected: (or/c (quote alexandrite-pear-shape) (quote alexandrite) (quote almandine-garnet) (quote amethyst) (quote ametrine) (quote ammolite) (quote apatite) (quote aplite) (quote apricot-square-radiant) (quote aquamarine) (quote australian-marquise) (quote aventurine) (quote azurite) (quote beryl) (quote black-obsidian) (quote black-onyx) (quote black-spinel-cushion) (quote blue-ceylon-sapphire) (quote blue-cushion) (quote blue-pear-shape) (quote blue-spinel-heart) (quote bulls-eye) (quote carnelian) (quote chrome-diopside) (quote chrysoberyl-cushion) (quote chrysolite) (quote citrine-checkerboard) (quote citrine) (quote clinohumite) (quote color-change-oval) (quote cordierite) (quote diamond) (quote dumortierite) (quote emerald) (quote fancy-spinel-marquise) (quote garnet) (quote golden-diamond-cut) (quote goldstone) (quote grandidierite) (quote gray-agate) (quote green-aventurine) (quote green-beryl-antique) (quote green-beryl) (quote green-princess-cut) (quote grossular-garnet) (quote hackmanite) (quote heliotrope) (quote hematite) (quote iolite-emerald-cut) (quote jasper) (quote jaspilite) (quote kunzite-oval) (quote kunzite) (quote labradorite) (quote lapis-lazuli) (quote lemon-quartz-briolette) (quote magnesite) (quote mexican-opal) (quote moonstone) (quote morganite-oval) (quote moss-agate) (quote orange-radiant) (quote padparadscha-oval) (quote padparadscha-sapphire) (quote peridot) (quote pink-emerald-cut) (quote pink-opal) (quote pink-round) (quote pink-spinel-cushion) (quote prasiolite) (quote prehnite) (quote purple-cabochon) (quote purple-oval) (quote purple-spinel-trillion) (quote purple-square-cushion) (quote raw-beryl) (quote raw-citrine) (quote red-diamond) (quote red-spinel-square-emerald-cut) (quote rhodonite) (quote rock-quartz) (quote rose-quartz) (quote ruby-diamond-profile) (quote ruby) (quote sphalerite) (quote spinel) (quote star-cabochon) (quote stilbite) (quote sunstone) (quote super-seven) (quote tanzanite-trillion) (quote tigers-eye) (quote tourmaline-laser-cut) (quote tourmaline) (quote unakite) (quote white-square) (quote yellow-baguette) (quote yellow-beryl-oval) (quote yellow-heart) (quote yellow-jasper) (quote zircon) (quote zoisite))
+  given: 'bullseye
+  in: an element of
+      the 3rd argument of
+      (->
+       (or/c 'straight 'elbow 'tri 'cross)
+       (or/c 0 90 180 270)
+       (listof
+        (or/c
+         'alexandrite-pear-shape
+         'alexandrite
+         'almandine-garnet
+         'amethyst
+         'ametrine
+         'ammolite
+         'apatite
+         'aplite
+         'apricot-square-radiant
+         'aquamarine
+         'australian-marquise
+         'aventurine
+         'azurite
+         'beryl
+         'black-obsidian
+         'black-onyx
+         'black-spinel-cushion
+         'blue-ceylon-sapphire
+         'blue-cushion
+         'blue-pear-shape
+         'blue-spinel-heart
+         'bulls-eye
+         'carnelian
+         'chrome-diopside
+         'chrysoberyl-cushion
+         'chrysolite
+         'citrine-checkerboard
+         'citrine
+         'clinohumite
+         'color-change-oval
+         'cordierite
+         'diamond
+         'dumortierite
+         'emerald
+         'fancy-spinel-marquise
+         'garnet
+         'golden-diamond-cut
+         'goldstone
+         'grandidierite
+         'gray-agate
+         'green-aventurine
+         'green-beryl-antique
+         'green-beryl
+         'green-princess-cut
+         'grossular-garnet
+         'hackmanite
+         'heliotrope
+         'hematite
+         'iolite-emerald-cut
+         'jasper
+         'jaspilite
+         'kunzite-oval
+         'kunzite
+         'labradorite
+         'lapis-lazuli
+         'lemon-quartz-briolette
+         'magnesite
+         'mexican-opal
+         'moonstone
+         'morganite-oval
+         'moss-agate
+         'orange-radiant
+         'padparadscha-oval
+         'padparadscha-sapphire
+         'peridot
+         'pink-emerald-cut
+         'pink-opal
+         'pink-round
+         'pink-spinel-cushion
+         'prasiolite
+         'prehnite
+         'purple-cabochon
+         'purple-oval
+         'purple-spinel-trillion
+         'purple-square-cushion
+         'raw-beryl
+         'raw-citrine
+         'red-diamond
+         'red-spinel-square-emerald-cut
+         'rhodonite
+         'rock-quartz
+         'rose-quartz
+         'ruby-diamond-profile
+         'ruby
+         'sphalerite
+         'spinel
+         'star-cabochon
+         'stilbite
+         'sunstone
+         'super-seven
+         'tanzanite-trillion
+         'tigers-eye
+         'tourmaline-laser-cut
+         'tourmaline
+         'unakite
+         'white-square
+         'yellow-baguette
+         'yellow-beryl-oval
+         'yellow-heart
+         'yellow-jasper
+         'zircon
+         'zoisite))
+       tile?)
+  contract from: 
+      /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/tile.rkt
+  blaming: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt
+   (assuming the contract is correct)
+  at: /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/tile.rkt:19:3
+  context...:
+   /proj/racket/plt-released/recent/collects/racket/contract/private/blame.rkt:346:0: raise-blame-error
+   /proj/racket/plt-released/recent/collects/racket/contract/private/list.rkt:215:14
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt:81:0: combine-matrices-elementwise
+   /course/cs4500f22/ta/github/crozzi-obrienz/Maze/Common/serialize.rkt:207:0: hash->gamestate
+   /proj/racket/plt-released/recent/collects/racket/contract/private/arrow-val-first.rkt:486:18
+   body of (submod "/course/cs4500f22/ta/github/crozzi-obrienz/4/xstate" main)
+((/course/cs4500f22/ta/github/4/3/Tests/0-in.json /course/cs4500f22/ta/github/4/3/Tests/0-out.json) (/course/cs4500f22/ta/github/4/3/Tests/1-in.json /course/cs4500f22/ta/github/4/3/Tests/1-out.json))
+((passed 2) (total 2) (partial-score 2))
+
